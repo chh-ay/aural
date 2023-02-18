@@ -1,41 +1,42 @@
 {
   "project_info": {
-    "project_number": "551683820741",
-    "project_id": "aural-00",
-    "storage_bucket": "aural-00.appspot.com"
+    "project_number": "358411713449",
+    "project_id": "aural-16",
+    "storage_bucket": "aural-16.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:551683820741:android:c503db01a6319cef0e34ac",
+        "mobilesdk_app_id": "1:358411713449:android:bb2afcf3f78592dfde62b8",
         "android_client_info": {
           "package_name": "com.example.aural"
         }
       },
       "oauth_client": [
         {
-          "client_id": "551683820741-h5puqbsti4goa1m0l65iei7ghiioi93s.apps.googleusercontent.com",
+          "client_id": "358411713449-cu7aldbn6ahifa21vp7rli9fvqa3otb9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.aural",
+            "certificate_hash": "692fdcb247200c46a5f323b4e5ae7f05d2484b12"
+          }
+        },
+        {
+          "client_id": "358411713449-qbm16i2e3et0btuaoa4deug9oofs3tr4.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCwLrePFJj_5qT4zvBfDid---1m3sKmrzQ"
+          "current_key": "AIzaSyAKi2Bn9SMgv2fCrz5UZ-TwKLhR9haNXHg"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "551683820741-h5puqbsti4goa1m0l65iei7ghiioi93s.apps.googleusercontent.com",
+              "client_id": "358411713449-qbm16i2e3et0btuaoa4deug9oofs3tr4.apps.googleusercontent.com",
               "client_type": 3
-            },
-            {
-              "client_id": "551683820741-tifg6qbf76arutgtkh8t3vje2k56fss0.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "com.example.aural"
-              }
             }
           ]
         }
