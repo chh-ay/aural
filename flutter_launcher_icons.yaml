@@ -1,0 +1,8 @@
+flutter_icons:
+  image_path: assets/icons/icons_1024.png
+  min_sdk_android: 21
+  android: true
+  web: 
+    generate: true
+    image_path: assets/icons/icons_1024.png
+  ios: true
