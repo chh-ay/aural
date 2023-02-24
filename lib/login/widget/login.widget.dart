@@ -10,12 +10,12 @@ class Login extends StatefulWidget {
 class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(top: 75),
+    return const Padding(
+      padding: EdgeInsets.only(top: 75),
       child: SizedBox(
         child: Text(
           'Login',
-          style: const TextStyle(
+          style: TextStyle(
             color: Colors.white,
             fontSize: 40,
             fontWeight: FontWeight.w900,

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
-
+import 'package:google_fonts/google_fonts.dart';
+import 'globals.dart' as globals;
 import 'login/login.page.dart';
 
 void main() async {
@@ -21,8 +22,22 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+          textTheme: const TextTheme(
+            bodyMedium: TextStyle(
+              color: globals.globalMaterialTextColor,
+            ),
+          ),
+          fontFamily: GoogleFonts.poppins().fontFamily,
+          canvasColor: globals.globalBackgroundColor,
+          bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+            backgroundColor: globals.globalBottomNavigationColor,
+          ),
+          iconTheme: const IconThemeData(
+            color: Color(globals.defaultColor),
+          ),
+          inputDecorationTheme: const InputDecorationTheme(
+            iconColor: Color(globals.defaultColor),
+          )),
       home: const LoginPage(),
       debugShowCheckedModeBanner: false,
     );
