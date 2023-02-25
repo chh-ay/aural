@@ -1,11 +1,11 @@
 // ignore_for_file: avoid_print
 
 import 'package:aural/register/register.page.dart';
-import 'package:aural/widget/footer.widget.dart';
-import 'package:aural/widget/footerText.widget.dart';
-import 'package:aural/widget/header.widget.dart';
-import 'package:aural/widget/inputField.widget.dart';
-import 'package:aural/widget/loginButton.widget.dart';
+import 'package:aural/widgets/footer.widget.dart';
+import 'package:aural/widgets/footerText.widget.dart';
+import 'package:aural/widgets/header.widget.dart';
+import 'package:aural/widgets/inputField.widget.dart';
+import 'package:aural/widgets/loginButton.widget.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 

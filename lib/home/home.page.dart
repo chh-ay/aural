@@ -1,4 +1,4 @@
-import 'package:aural/widget/logoutButton.widget.dart';
+import 'package:aural/widgets/logoutButton.widget.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:aural/globals.dart' as globals;

@@ -1,11 +1,11 @@
 import 'dart:developer';
 
 import 'package:aural/login/login.page.dart';
-import 'package:aural/widget/footer.widget.dart';
-import 'package:aural/widget/footerText.widget.dart';
-import 'package:aural/widget/header.widget.dart';
-import 'package:aural/widget/inputField.widget.dart';
-import 'package:aural/widget/loginButton.widget.dart';
+import 'package:aural/widgets/footer.widget.dart';
+import 'package:aural/widgets/footerText.widget.dart';
+import 'package:aural/widgets/header.widget.dart';
+import 'package:aural/widgets/inputField.widget.dart';
+import 'package:aural/widgets/loginButton.widget.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -21,22 +21,34 @@ class _RegisterPageState extends State<RegisterPage> {
   final emailInput = TextEditingController();
   final passwordInput = TextEditingController();
 
-  Future<void> registerWithGoogle() async {
+  void registerProcess() async {
+    showDialog(
+        context: context,
+        builder: (context) {
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
+        });
+
     try {
-      final credential =
-          await FirebaseAuth.instance.createUserWithEmailAndPassword(
+      await FirebaseAuth.instance.createUserWithEmailAndPassword(
         email: emailInput.text.trim(),
         password: passwordInput.text.trim(),
       );
-      log('$credential');
+      // ignore: use_build_context_synchronously
+      Navigator.pop(context);
     } on FirebaseAuthException catch (e) {
-      if (e.code == 'weak-password') {
-        log('The password provided is too weak.');
-      } else if (e.code == 'email-already-in-use') {
-        log('The account already exists for that email.');
+      Navigator.pop(context);
+      if (e.code == 'user-not-found') {
+        print('No user found for that email.');
+      } else if (e.code == 'wrong-password') {
+        print('Wrong password provided for that user.');
+      } else if (e.code == 'invalid-email') {
+        print('Invalid email provided for that user.');
       }
+      print(e.code);
     } catch (e) {
-      log('$e');
+      print(e);
     }
   }
 
@@ -75,7 +87,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   hidden: true,
                 ),
                 const Padding(padding: EdgeInsets.only(top: 40)),
-                LoginButton(loginProcess: registerWithGoogle),
+                LoginButton(loginProcess: registerProcess),
                 const Padding(padding: EdgeInsets.only(top: 50)),
                 const Footer(),
                 const Padding(padding: EdgeInsets.only(top: 30)),
