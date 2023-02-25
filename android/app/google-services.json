@@ -37,6 +37,13 @@
             {
               "client_id": "358411713449-qbm16i2e3et0btuaoa4deug9oofs3tr4.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "358411713449-76pnk3t3csmiio43562onm96v22t6g91.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.aural"
+              }
             }
           ]
         }
