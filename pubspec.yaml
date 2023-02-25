@@ -70,8 +70,10 @@ flutter:
   assets:
       - assets/icons/icons_1024.png
       - assets/icons/icons_1024_p.png
-      - assets/logo/logo.png
       - assets/logo/logo_l.png
+      - assets/personals/sivtheng.jpg
+      - assets/personals/monyreadh.jpg
+      - assets/personals/chhay.jpg
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
 

@@ -94,7 +94,7 @@ class _LoginPageState extends State<LoginPage> {
                   hidden: true,
                 ),
                 const Padding(padding: EdgeInsets.only(top: 40)),
-                LoginButton(loginProcess: loginProcess),
+                LoginButton(loginProcess: loginProcess, btnTxt: 'Login'),
                 const Padding(padding: EdgeInsets.only(top: 5)),
                 // const LoginWidget(),
                 const Padding(padding: EdgeInsets.only(top: 50)),

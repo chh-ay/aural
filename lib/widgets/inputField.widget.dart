@@ -8,12 +8,14 @@ class InputField extends StatefulWidget {
     required this.hintTxt,
     required this.icon,
     this.hidden = false,
+    this.readOnly = false,
   });
 
   final TextEditingController controllerInput;
   final String hintTxt;
   final IconData icon;
   final bool hidden;
+  final bool readOnly;
 
   @override
   State<InputField> createState() => _InputFieldState();
@@ -32,6 +34,7 @@ class _InputFieldState extends State<InputField> {
             style: TextStyle(color: globals.globalMaterialTextColor.shade300),
             controller: widget.controllerInput,
             obscureText: widget.hidden,
+            readOnly: widget.readOnly,
             decoration: InputDecoration(
                 prefixIcon: Icon(
                   widget.icon,

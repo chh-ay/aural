@@ -42,6 +42,7 @@ class MyApp extends StatelessWidget {
               const IconThemeData(color: globals.globalMaterialDefaultColor),
           selectedItemColor: globals.globalMaterialDefaultColor,
         ),
+        cardColor: globals.globalMaterialDefaultColor.shade50,
       ),
       home: const AuthPage(),
       debugShowCheckedModeBanner: false,

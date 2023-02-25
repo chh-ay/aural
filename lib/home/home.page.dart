@@ -1,3 +1,6 @@
+import 'package:aural/home/widgets/aboutUs.widget.dart';
+import 'package:aural/home/widgets/home.widget.dart';
+import 'package:aural/home/widgets/profile.widget.dart';
 import 'package:aural/widgets/logoutButton.widget.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -15,18 +18,9 @@ class _HomePageState extends State<HomePage> {
   static const TextStyle optionStyle =
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   static const List<Widget> _widgetOptions = <Widget>[
-    Text(
-      'Index 0: Home',
-      style: optionStyle,
-    ),
-    Text(
-      'Index 1: Business',
-      style: optionStyle,
-    ),
-    Text(
-      'Index 2: School',
-      style: optionStyle,
-    ),
+    HomeWidget(),
+    ProfilePage(),
+    AboutUsPage()
   ];
 
   void _onItemTapped(int index) {
