@@ -1,4 +1,4 @@
-import 'dart:developer';
+// ignore_for_file: avoid_print
 
 import 'package:aural/login/login.page.dart';
 import 'package:aural/widgets/footer.widget.dart';
@@ -45,12 +45,24 @@ class _RegisterPageState extends State<RegisterPage> {
         print('Wrong password provided for that user.');
       } else if (e.code == 'invalid-email') {
         print('Invalid email provided for that user.');
+      } else if (e.code == 'email-already-in-use') {
+        incorrectInput(e.code);
       }
       print(e.code);
     } catch (e) {
       print(e);
     }
   }
+
+  incorrectInput(errCode) => {
+        showDialog(
+            context: context,
+            builder: (context) {
+              return AlertDialog(
+                title: Text(errCode),
+              );
+            })
+      };
 
   navigate() => {
         Navigator.push(
@@ -87,7 +99,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   hidden: true,
                 ),
                 const Padding(padding: EdgeInsets.only(top: 40)),
-                LoginButton(loginProcess: registerProcess),
+                LoginButton(loginProcess: registerProcess, btnTxt: 'Register'),
                 const Padding(padding: EdgeInsets.only(top: 50)),
                 const Footer(),
                 const Padding(padding: EdgeInsets.only(top: 30)),
