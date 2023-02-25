@@ -35,7 +35,6 @@ const MaterialColor globalMaterialDefaultColor =
   800: Color(0xFF874700),
   900: Color(0xFF862a00),
 });
-
 const MaterialColor globalBackgroundColor =
     MaterialColor(0xFF3C2A21, <int, Color>{
   50: Color(0xFFedecea),

@@ -2,7 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:aural/globals.dart' as globals;
 
 class LoginButton extends StatefulWidget {
-  const LoginButton({super.key});
+  const LoginButton({
+    super.key,
+    required this.loginProcess,
+  });
+
+  final Function() loginProcess;
 
   @override
   State<LoginButton> createState() => _LoginButtonState();
@@ -20,7 +25,7 @@ class _LoginButtonState extends State<LoginButton> {
           borderRadius: BorderRadius.circular(10),
         ),
         child: TextButton(
-          onPressed: () {},
+          onPressed: widget.loginProcess,
           child: const Text(
             'Login',
             style: TextStyle(

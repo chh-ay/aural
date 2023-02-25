@@ -1,6 +1,6 @@
-// ignore_for_file: avoid_print
+import 'dart:developer';
 
-import 'package:aural/register/register.page.dart';
+import 'package:aural/login/login.page.dart';
 import 'package:aural/widget/footer.widget.dart';
 import 'package:aural/widget/footerText.widget.dart';
 import 'package:aural/widget/header.widget.dart';
@@ -9,64 +9,40 @@ import 'package:aural/widget/loginButton.widget.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+class RegisterPage extends StatefulWidget {
+  const RegisterPage({super.key});
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<RegisterPage> createState() => _RegisterPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _RegisterPageState extends State<RegisterPage> {
+  final usernameInput = TextEditingController();
   final emailInput = TextEditingController();
   final passwordInput = TextEditingController();
 
-  void loginProcess() async {
-    showDialog(
-        context: context,
-        builder: (context) {
-          return const Center(
-            child: CircularProgressIndicator(),
-          );
-        });
-
+  Future<void> registerWithGoogle() async {
     try {
-      await FirebaseAuth.instance.signInWithEmailAndPassword(
+      final credential =
+          await FirebaseAuth.instance.createUserWithEmailAndPassword(
         email: emailInput.text.trim(),
         password: passwordInput.text.trim(),
       );
-      // ignore: use_build_context_synchronously
-      Navigator.pop(context);
+      log('$credential');
     } on FirebaseAuthException catch (e) {
-      Navigator.pop(context);
-      if (e.code == 'user-not-found') {
-        print('No user found for that email.');
-        incorrectInput(e.code);
-      } else if (e.code == 'wrong-password') {
-        print('Wrong password provided for that user.');
-        incorrectInput(e.code);
-      } else if (e.code == 'invalid-email') {
-        print('Invalid email provided for that user.');
-        incorrectInput(e.code);
+      if (e.code == 'weak-password') {
+        log('The password provided is too weak.');
+      } else if (e.code == 'email-already-in-use') {
+        log('The account already exists for that email.');
       }
-      print(e.code);
     } catch (e) {
-      print(e);
+      log('$e');
     }
   }
 
-  incorrectInput(errCode) => {
-        showDialog(
-            context: context,
-            builder: (context) {
-              return AlertDialog(
-                title: Text(errCode),
-              );
-            })
-      };
-
   navigate() => {
-        Navigator.push(context,
-            MaterialPageRoute(builder: (context) => const RegisterPage()))
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => const LoginPage()))
       };
 
   @override
@@ -80,8 +56,13 @@ class _LoginPageState extends State<LoginPage> {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                const Header(headerTxt: 'Sign in to continue'),
+                const Header(headerTxt: 'Register to continue'),
                 const Padding(padding: EdgeInsets.only(top: 20)),
+                InputField(
+                  controllerInput: usernameInput,
+                  hintTxt: 'Enter your username',
+                  icon: Icons.account_circle_rounded,
+                ),
                 InputField(
                   controllerInput: emailInput,
                   hintTxt: 'Enter your email',
@@ -94,15 +75,13 @@ class _LoginPageState extends State<LoginPage> {
                   hidden: true,
                 ),
                 const Padding(padding: EdgeInsets.only(top: 40)),
-                LoginButton(loginProcess: loginProcess),
-                const Padding(padding: EdgeInsets.only(top: 5)),
-                // const LoginWidget(),
+                LoginButton(loginProcess: registerWithGoogle),
                 const Padding(padding: EdgeInsets.only(top: 50)),
                 const Footer(),
                 const Padding(padding: EdgeInsets.only(top: 30)),
                 FooterTxt(
-                  mainTxt: "Don't have an account?",
-                  btnTxt: 'Register now!',
+                  mainTxt: 'Already have an account?',
+                  btnTxt: 'Login now!',
                   onClick: navigate,
                 ),
               ],
