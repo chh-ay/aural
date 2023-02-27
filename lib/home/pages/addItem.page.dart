@@ -1,21 +1,25 @@
+import 'package:aural/widgets/customButton.widget.dart';
+import 'package:aural/widgets/customPadding.widget.dart';
 import 'package:aural/widgets/footer.widget.dart';
-import 'package:aural/widgets/goBackButton.widget.dart';
 import 'package:aural/widgets/headerText.widget.dart';
 import 'package:aural/widgets/inputField.widget.dart';
-import 'package:aural/widgets/submitButton.widget.dart';
 import 'package:flutter/material.dart';
 
-class AddItemPage extends StatefulWidget {
-  const AddItemPage({super.key});
+class AddItem extends StatefulWidget {
+  const AddItem({super.key});
 
   @override
-  State<AddItemPage> createState() => _AddItemPageState();
+  State<AddItem> createState() => _AddItemState();
 }
 
-class _AddItemPageState extends State<AddItemPage> {
+class _AddItemState extends State<AddItem> {
   final con1 = TextEditingController();
   final con2 = TextEditingController();
   final con3 = TextEditingController();
+
+  void contextPopped() {
+    Navigator.pop(context);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +27,7 @@ class _AddItemPageState extends State<AddItemPage> {
         body: Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        const HeaderText(headerTxt: 'List Item'),
+        const HeaderText(headerTxt: 'Add Item'),
         InputField(
           controllerInput: con1,
           hintTxt: 'Title',
@@ -34,14 +38,17 @@ class _AddItemPageState extends State<AddItemPage> {
           hintTxt: 'Description',
           icon: Icons.description,
         ),
-        const Padding(padding: EdgeInsets.only(top: 100)),
-        SubmitButton(loginProcess: () {}),
-        const Padding(padding: EdgeInsets.only(top: 50)),
+        const CustomPadding(topP: 100),
+        const CustomButton(
+          btnTxt: 'Submit',
+        ),
+        const CustomPadding(topP: 50),
         const Footer(),
-        const Padding(padding: EdgeInsets.only(top: 50)),
-        GoBackButton(loginProcess: () {
-          Navigator.pop(context);
-        })
+        const CustomPadding(topP: 40),
+        CustomButton(
+          btnTxt: 'Go back',
+          optionalProcess: contextPopped,
+        )
       ],
     ));
   }

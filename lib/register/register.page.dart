@@ -1,11 +1,12 @@
 // ignore_for_file: avoid_print
 
 import 'package:aural/login/login.page.dart';
+import 'package:aural/widgets/customPadding.widget.dart';
 import 'package:aural/widgets/footer.widget.dart';
 import 'package:aural/widgets/footerText.widget.dart';
 import 'package:aural/widgets/header.widget.dart';
 import 'package:aural/widgets/inputField.widget.dart';
-import 'package:aural/widgets/loginButton.widget.dart';
+import 'package:aural/widgets/customButton.widget.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -81,7 +82,7 @@ class _RegisterPageState extends State<RegisterPage> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 const Header(headerTxt: 'Register to continue'),
-                const Padding(padding: EdgeInsets.only(top: 20)),
+                const CustomPadding(topP: 20),
                 InputField(
                   controllerInput: usernameInput,
                   hintTxt: 'Enter your username',
@@ -98,11 +99,14 @@ class _RegisterPageState extends State<RegisterPage> {
                   icon: Icons.lock,
                   hidden: true,
                 ),
-                const Padding(padding: EdgeInsets.only(top: 40)),
-                LoginButton(loginProcess: registerProcess, btnTxt: 'Register'),
-                const Padding(padding: EdgeInsets.only(top: 50)),
+                const CustomPadding(topP: 40),
+                CustomButton(
+                  optionalProcess: registerProcess,
+                  btnTxt: 'Register',
+                ),
+                const CustomPadding(topP: 50),
                 const Footer(),
-                const Padding(padding: EdgeInsets.only(top: 30)),
+                const CustomPadding(topP: 30),
                 FooterTxt(
                   mainTxt: 'Already have an account?',
                   btnTxt: 'Login now!',

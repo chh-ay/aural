@@ -21,7 +21,7 @@ class _CardWidgetState extends State<CardWidget> {
             ListTile(
               leading: Image.asset('assets/logo/logo_l.png'),
               title: const Text('Demo Items Title'),
-              subtitle: const Text('Demo Items'),
+              subtitle: const Text('Demo Items Description'),
             ),
           ],
         ),

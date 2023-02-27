@@ -1,14 +1,14 @@
 import 'package:aural/widgets/headerText.widget.dart';
 import 'package:flutter/material.dart';
 
-class AboutUsPage extends StatefulWidget {
-  const AboutUsPage({super.key});
+class AboutUs extends StatefulWidget {
+  const AboutUs({super.key});
 
   @override
-  State<AboutUsPage> createState() => _AboutUsPageState();
+  State<AboutUs> createState() => _AboutUsState();
 }
 
-class _AboutUsPageState extends State<AboutUsPage> {
+class _AboutUsState extends State<AboutUs> {
   @override
   Widget build(BuildContext context) {
     return ListView(children: [

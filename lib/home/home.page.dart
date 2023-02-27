@@ -1,7 +1,6 @@
-import 'package:aural/home/widgets/aboutUs.widget.dart';
-import 'package:aural/home/widgets/home.widget.dart';
-import 'package:aural/home/widgets/profile.widget.dart';
-import 'package:aural/widgets/logoutButton.widget.dart';
+import 'package:aural/home/pages/aboutUs.page.dart';
+import 'package:aural/home/pages/listItem.page.dart';
+import 'package:aural/home/pages/profile.page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:aural/globals.dart' as globals;
@@ -15,12 +14,10 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int _selectedIndex = 0;
-  static const TextStyle optionStyle =
-      TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   static const List<Widget> _widgetOptions = <Widget>[
-    HomeWidget(),
-    ProfilePage(),
-    AboutUsPage()
+    ListItem(),
+    Profile(),
+    AboutUs()
   ];
 
   void _onItemTapped(int index) {
