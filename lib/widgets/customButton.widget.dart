@@ -1,17 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:aural/globals.dart' as globals;
 
-class LoginButton extends StatefulWidget {
-  const LoginButton(
-      {super.key, required this.loginProcess, required this.btnTxt});
+class CustomButton extends StatefulWidget {
+  const CustomButton({
+    super.key,
+    this.optionalProcess,
+    required this.btnTxt,
+  });
 
-  final Function() loginProcess;
+  final Function()? optionalProcess;
   final String btnTxt;
   @override
-  State<LoginButton> createState() => _LoginButtonState();
+  State<CustomButton> createState() => _CustomButtonState();
 }
 
-class _LoginButtonState extends State<LoginButton> {
+class _CustomButtonState extends State<CustomButton> {
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -23,7 +26,7 @@ class _LoginButtonState extends State<LoginButton> {
           borderRadius: BorderRadius.circular(10),
         ),
         child: TextButton(
-          onPressed: widget.loginProcess,
+          onPressed: widget.optionalProcess,
           child: Text(
             widget.btnTxt,
             style: const TextStyle(

@@ -3,16 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'globals.dart' as globals;
-import 'login/login.page.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 
 void main() async {
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
+  FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
   Future.delayed(
     const Duration(milliseconds: 1250),
     () => {FlutterNativeSplash.remove()},
