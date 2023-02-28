@@ -16,7 +16,7 @@ class _HeaderState extends State<Header> {
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
+      children: [
         const Image(
           image: AssetImage('assets/logo/logo_l.png'),
           height: globals.headerLogoHeight,

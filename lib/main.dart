@@ -13,9 +13,8 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
   Future.delayed(
-    const Duration(milliseconds: 1250),
-    () => {FlutterNativeSplash.remove()},
-  );
+      const Duration(milliseconds: 1250), () => {FlutterNativeSplash.remove()});
+
   runApp(const MyApp());
 }
 

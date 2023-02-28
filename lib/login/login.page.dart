@@ -1,14 +1,14 @@
 // ignore_for_file: avoid_print
 
 import 'package:aural/register/register.page.dart';
-import 'package:aural/widgets/customPadding.widget.dart';
-import 'package:aural/widgets/footer.widget.dart';
-import 'package:aural/widgets/footerText.widget.dart';
-import 'package:aural/widgets/header.widget.dart';
-import 'package:aural/widgets/inputField.widget.dart';
-import 'package:aural/widgets/customButton.widget.dart';
+import 'package:aural/utils/footer.widget.dart';
+import 'package:aural/utils/footerText.widget.dart';
+import 'package:aural/utils/header.widget.dart';
+import 'package:aural/utils/inputField.widget.dart';
+import 'package:aural/utils/customButton.widget.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:aural/globals.dart' as globals;
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -39,15 +39,16 @@ class _LoginPageState extends State<LoginPage> {
       Navigator.pop(context);
     } on FirebaseAuthException catch (e) {
       Navigator.pop(context);
-      if (e.code == 'user-not-found') {
-        print('No user found for that email.');
-        incorrectInput(e.code);
-      } else if (e.code == 'wrong-password') {
-        print('Wrong password provided for that user.');
-        incorrectInput(e.code);
-      } else if (e.code == 'invalid-email') {
-        print('Invalid email provided for that user.');
-        incorrectInput(e.code);
+      switch (e.code) {
+        case 'invalid-email':
+          incorrectInput(e.code);
+          break;
+        case 'user-not-found':
+          incorrectInput(e.code);
+          break;
+        case 'wrong-password':
+          incorrectInput(e.code);
+          break;
       }
       print(e.code);
     } catch (e) {
@@ -61,6 +62,10 @@ class _LoginPageState extends State<LoginPage> {
             builder: (context) {
               return AlertDialog(
                 title: Text(errCode),
+                titleTextStyle: const TextStyle(
+                  fontSize: 16,
+                ),
+                backgroundColor: globals.globalBottomNavigationColor,
               );
             })
       };
@@ -74,36 +79,37 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: ListView(
-        children: <Widget>[
+        children: [
           Padding(
             padding: const EdgeInsets.fromLTRB(50, 80, 50, 50),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
+              children: [
                 const Header(headerTxt: 'Sign in to continue'),
-                const CustomPadding(topP: 20),
+                const SizedBox(height: 40),
                 InputField(
                   controllerInput: emailInput,
                   hintTxt: 'Enter your email',
                   icon: Icons.mail,
                 ),
+                const SizedBox(height: 25),
                 InputField(
                   controllerInput: passwordInput,
                   hintTxt: 'Enter your password',
                   icon: Icons.lock,
                   hidden: true,
                 ),
-                const CustomPadding(topP: 40),
+                const SizedBox(height: 40),
                 CustomButton(
                   optionalProcess: loginProcess,
                   btnTxt: 'Login',
                 ),
-                const Padding(padding: EdgeInsets.only(top: 5)),
+                // const SizedBox(height: 5),
                 // const LoginWidget(),
-                const CustomPadding(topP: 50),
+                const SizedBox(height: 40),
                 const Footer(),
-                const CustomPadding(topP: 30),
+                const SizedBox(height: 20),
                 FooterTxt(
                   mainTxt: "Don't have an account?",
                   btnTxt: 'Register now!',

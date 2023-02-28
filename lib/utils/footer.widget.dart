@@ -14,27 +14,31 @@ class _FooterState extends State<Footer> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
-      children: const [
-        SizedBox(
-          width: 110,
-          child: Divider(
-            thickness: 1.25,
-            color: globals.globalMaterialDefaultColor,
+      children: [
+        Expanded(
+          child: SizedBox(
+            width: MediaQuery.of(context).size.width * 0.5,
+            child: const Divider(
+              thickness: 1,
+              color: globals.globalMaterialDefaultColor,
+            ),
           ),
         ),
-        Padding(
-          padding: EdgeInsets.only(left: 11, right: 11),
+        const Padding(
+          padding: EdgeInsets.only(left: 12, right: 12),
           child: Image(
             image: AssetImage('assets/logo/logo_l.png'),
             width: 16,
             height: 16,
           ),
         ),
-        SizedBox(
-          width: 110,
-          child: Divider(
-            thickness: 1.25,
-            color: globals.globalMaterialDefaultColor,
+        Expanded(
+          child: SizedBox(
+            width: MediaQuery.of(context).size.width * 0.5,
+            child: const Divider(
+              thickness: 1,
+              color: globals.globalMaterialDefaultColor,
+            ),
           ),
         ),
       ],

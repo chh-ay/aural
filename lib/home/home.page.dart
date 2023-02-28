@@ -14,10 +14,10 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int _selectedIndex = 0;
-  static const List<Widget> _widgetOptions = <Widget>[
-    ListItem(),
-    Profile(),
-    AboutUs()
+  static final List<Widget> _widgetOptions = [
+    const ListItem(),
+    const Profile(),
+    const AboutUs(),
   ];
 
   void _onItemTapped(int index) {

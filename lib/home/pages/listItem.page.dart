@@ -1,5 +1,5 @@
 import 'package:aural/home/widgets/card.widget.dart';
-import 'package:aural/widgets/headerText.widget.dart';
+import 'package:aural/utils/headerText.widget.dart';
 import 'package:flutter/material.dart';
 
 class ListItem extends StatefulWidget {
@@ -12,21 +12,23 @@ class ListItem extends StatefulWidget {
 class _ListItemState extends State<ListItem> {
   @override
   Widget build(BuildContext context) {
-    return ListView(
-      scrollDirection: Axis.vertical,
-      children: const [
-        HeaderText(
-          headerTxt: 'Items List',
-        ),
-        CardWidget(),
-        CardWidget(),
-        CardWidget(),
-        CardWidget(),
-        CardWidget(),
-        CardWidget(),
-        CardWidget(),
-        CardWidget(),
-      ],
+    return Scaffold(
+      body: ListView(
+        scrollDirection: Axis.vertical,
+        children: const [
+          HeaderText(
+            headerTxt: 'Items List',
+          ),
+          CardWidget(),
+          CardWidget(),
+          CardWidget(),
+          CardWidget(),
+          CardWidget(),
+          CardWidget(),
+          CardWidget(),
+          CardWidget(),
+        ],
+      ),
     );
   }
 }

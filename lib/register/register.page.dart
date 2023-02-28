@@ -1,12 +1,11 @@
 // ignore_for_file: avoid_print
 
 import 'package:aural/login/login.page.dart';
-import 'package:aural/widgets/customPadding.widget.dart';
-import 'package:aural/widgets/footer.widget.dart';
-import 'package:aural/widgets/footerText.widget.dart';
-import 'package:aural/widgets/header.widget.dart';
-import 'package:aural/widgets/inputField.widget.dart';
-import 'package:aural/widgets/customButton.widget.dart';
+import 'package:aural/utils/footer.widget.dart';
+import 'package:aural/utils/footerText.widget.dart';
+import 'package:aural/utils/header.widget.dart';
+import 'package:aural/utils/inputField.widget.dart';
+import 'package:aural/utils/customButton.widget.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -74,39 +73,43 @@ class _RegisterPageState extends State<RegisterPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: ListView(
-        children: <Widget>[
+        children: [
           Padding(
             padding: const EdgeInsets.fromLTRB(50, 80, 50, 50),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
+              children: [
                 const Header(headerTxt: 'Register to continue'),
-                const CustomPadding(topP: 20),
+                const SizedBox(height: 40),
                 InputField(
                   controllerInput: usernameInput,
                   hintTxt: 'Enter your username',
                   icon: Icons.account_circle_rounded,
                 ),
+                const SizedBox(height: 25),
                 InputField(
                   controllerInput: emailInput,
                   hintTxt: 'Enter your email',
                   icon: Icons.mail,
                 ),
+                const SizedBox(height: 25),
                 InputField(
                   controllerInput: passwordInput,
                   hintTxt: 'Enter your password',
                   icon: Icons.lock,
                   hidden: true,
                 ),
-                const CustomPadding(topP: 40),
+                const SizedBox(height: 40),
                 CustomButton(
                   optionalProcess: registerProcess,
-                  btnTxt: 'Register',
+                  btnTxt: 'Login',
                 ),
-                const CustomPadding(topP: 50),
+                const SizedBox(height: 5),
+                // const LoginWidget(),
+                const SizedBox(height: 40),
                 const Footer(),
-                const CustomPadding(topP: 30),
+                const SizedBox(height: 20),
                 FooterTxt(
                   mainTxt: 'Already have an account?',
                   btnTxt: 'Login now!',
