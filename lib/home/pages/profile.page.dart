@@ -1,9 +1,8 @@
 import 'package:aural/home/pages/addItem.page.dart';
-import 'package:aural/widgets/customButton.widget.dart';
-import 'package:aural/widgets/customPadding.widget.dart';
-import 'package:aural/widgets/footer.widget.dart';
-import 'package:aural/widgets/headerText.widget.dart';
-import 'package:aural/widgets/inputField.widget.dart';
+import 'package:aural/utils/customButton.widget.dart';
+import 'package:aural/utils/footer.widget.dart';
+import 'package:aural/utils/headerText.widget.dart';
+import 'package:aural/utils/inputField.widget.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -29,32 +28,39 @@ class _ProfileState extends State<Profile> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        const HeaderText(headerTxt: 'Profile'),
-        InputField(
-          controllerInput: usernameInput,
-          hintTxt: 'admin',
-          icon: Icons.account_circle_sharp,
-          readOnly: true,
+    return Scaffold(
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 50),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const HeaderText(headerTxt: 'Profile'),
+            const SizedBox(height: 40),
+            InputField(
+              controllerInput: usernameInput,
+              hintTxt: 'admin',
+              icon: Icons.account_circle_sharp,
+              readOnly: true,
+            ),
+            const SizedBox(height: 25),
+            InputField(
+              controllerInput: emailInput,
+              hintTxt: 'admin@gmail.com',
+              icon: Icons.email,
+              readOnly: true,
+            ),
+            const SizedBox(height: 50),
+            const CustomButton(btnTxt: 'Edit'),
+            const SizedBox(height: 40),
+            const Footer(),
+            const SizedBox(height: 40),
+            CustomButton(btnTxt: 'Add item', optionalProcess: navigate),
+            const SizedBox(height: 15),
+            CustomButton(btnTxt: 'Sign out', optionalProcess: logOut)
+          ],
         ),
-        InputField(
-          controllerInput: emailInput,
-          hintTxt: 'admin@gmail.com',
-          icon: Icons.email,
-          readOnly: true,
-        ),
-        const CustomPadding(topP: 50),
-        const CustomButton(btnTxt: 'Edit'),
-        const CustomPadding(topP: 50),
-        const Footer(),
-        const CustomPadding(topP: 40),
-        CustomButton(btnTxt: 'Add item', optionalProcess: navigate),
-        const CustomPadding(topP: 15),
-        CustomButton(btnTxt: 'Sign out', optionalProcess: logOut)
-      ],
+      ),
     );
   }
 }

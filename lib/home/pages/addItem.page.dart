@@ -1,8 +1,7 @@
-import 'package:aural/widgets/customButton.widget.dart';
-import 'package:aural/widgets/customPadding.widget.dart';
-import 'package:aural/widgets/footer.widget.dart';
-import 'package:aural/widgets/headerText.widget.dart';
-import 'package:aural/widgets/inputField.widget.dart';
+import 'package:aural/utils/customButton.widget.dart';
+import 'package:aural/utils/footer.widget.dart';
+import 'package:aural/utils/headerText.widget.dart';
+import 'package:aural/utils/inputField.widget.dart';
 import 'package:flutter/material.dart';
 
 class AddItem extends StatefulWidget {
@@ -24,32 +23,38 @@ class _AddItemState extends State<AddItem> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Column(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        const HeaderText(headerTxt: 'Add Item'),
-        InputField(
-          controllerInput: con1,
-          hintTxt: 'Title',
-          icon: Icons.title,
+      body: Padding(
+        padding: const EdgeInsets.fromLTRB(50, 80, 50, 50),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            const HeaderText(headerTxt: 'Add Item'),
+            const SizedBox(height: 40),
+            InputField(
+              controllerInput: con1,
+              hintTxt: 'Title',
+              icon: Icons.title,
+            ),
+            const SizedBox(height: 25),
+            InputField(
+              controllerInput: con2,
+              hintTxt: 'Description',
+              icon: Icons.description,
+            ),
+            const SizedBox(height: 100),
+            const CustomButton(
+              btnTxt: 'Submit',
+            ),
+            const SizedBox(height: 50),
+            const Footer(),
+            const SizedBox(height: 40),
+            CustomButton(
+              btnTxt: 'Go back',
+              optionalProcess: contextPopped,
+            )
+          ],
         ),
-        InputField(
-          controllerInput: con2,
-          hintTxt: 'Description',
-          icon: Icons.description,
-        ),
-        const CustomPadding(topP: 100),
-        const CustomButton(
-          btnTxt: 'Submit',
-        ),
-        const CustomPadding(topP: 50),
-        const Footer(),
-        const CustomPadding(topP: 40),
-        CustomButton(
-          btnTxt: 'Go back',
-          optionalProcess: contextPopped,
-        )
-      ],
-    ));
+      ),
+    );
   }
 }
